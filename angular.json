@@ -24,9 +24,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "./node_modules/popper/index.js",
+              "./node_modules/jquery/dist/jquery.min.js"
+
+            ]
           },
           "configurations": {
             "production": {
@@ -62,7 +68,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "productapplication:build"
+            "browserTarget": "productapplication:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -119,6 +126,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "productapplication"
+    }
+  },
+  "defaultProject": "productapplication",
+  "cli": {
+    "analytics": "60a1e0ab-3d0b-4704-989b-1b0c055b96a1"
+  }
 }
