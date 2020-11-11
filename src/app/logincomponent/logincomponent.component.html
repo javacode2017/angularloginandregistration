@@ -1,6 +1,8 @@
 
 <div class="container pt-4">
+
 <form #loginform="ngForm"  (ngSubmit)="loginUser()">
+    <small class="danger">{{msg}}</small>
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email" [(ngModel)]="user.emailId">

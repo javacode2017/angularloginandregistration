@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import  { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RegistrationService } from '../registration.service';
 import { User } from '../user';
 
@@ -11,15 +12,19 @@ import { User } from '../user';
 })
 export class LogincomponentComponent implements OnInit {
    user = new User();
-  constructor(private _service: RegistrationService) { }
+   msg = '';
+  constructor(private _service: RegistrationService, private _router :Router) { }
 
   ngOnInit(): void {
   }
 
   loginUser(){
     this._service.loginUserFromRemote(this.user).subscribe(
-      data => console.log("response success"),
-      error => console.log("error occuring while interacting")
+      data => {console.log("response success"),
+                this._router.navigate(['/loginsuccess'])},
+      error =>{console.log("error occuring while interacting"),
+              this.msg='Bad Credentials';
+              }
       )
   }
 
