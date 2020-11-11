@@ -12,8 +12,6 @@ export class RegistrationService {
   constructor(private httpclient: HttpClient) { }
 
   public loginUserFromRemote(user: User):Observable<any>{
-    console.log("inside service")
-    alert("service");
     return this.httpclient.post<any>("http://localhost:8080/login",user)
 
   }
