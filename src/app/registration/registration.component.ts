@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RegistrationService } from '../registration.service';
+import { User } from '../user';
+
 
 @Component({
   selector: 'app-registration',
@@ -7,9 +12,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor() { }
+  user = new User();
+  msg='';
+  constructor(private _service: RegistrationService, private _router:Router) { }
 
   ngOnInit(): void {
+  }
+  registerUser(){    
+    this._service.registerUserFromRemote(this.user).subscribe(
+      data =>{
+        this.msg="Registered Successfully";
+        this._router.navigate(['/login']);
+      },
+      error => {
+        this.msg=error.error;
+      }
+    );
   }
 
 }

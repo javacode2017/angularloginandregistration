@@ -28,6 +28,12 @@ export class LogincomponentComponent implements OnInit {
       )
   }
 
+  gotoregistration(){    
+    this._router.navigate(['/registration']);
+  }
+  
+
+
   test(){
     this._service.test().subscribe(
       data => console.log("response success"),
